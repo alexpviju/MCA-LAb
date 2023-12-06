@@ -1,0 +1,252 @@
+mysql> show tables;
++-------------------+
+| Tables_in_AKASHDB |
++-------------------+
+| book_details      |
+| emp_view          |
+| employee          |
+| publisher         |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from publisher;
++--------------+----------------+---------+------------+---------+
+| publisher_id | publisher_name | city    | state      | country |
++--------------+----------------+---------+------------+---------+
+| p1           | kk_books       | kochi   | kerala     | India   |
+| p2           | ant_books      | chennai | Tamil Nadu | India   |
++--------------+----------------+---------+------------+---------+
+2 rows in set (0.18 sec)
+
+mysql> insert into publisher values('p3','green books','banglore','Karnataka','India');
+Query OK, 1 row affected (0.47 sec)
+
+mysql> desc book_details;
++--------------+---------------+------+-----+---------+-------+
+| Field        | Type          | Null | Key | Default | Extra |
++--------------+---------------+------+-----+---------+-------+
+| ISBN         | varchar(20)   | NO   | PRI | NULL    |       |
+| title        | varchar(20)   | YES  |     | NULL    |       |
+| MRP          | decimal(10,0) | YES  |     | NULL    |       |
+| publisher_id | varchar(20)   | YES  | MUL | NULL    |       |
+| author       | varchar(20)   | YES  |     | NULL    |       |
++--------------+---------------+------+-----+---------+-------+
+5 rows in set (0.16 sec)
+
+mysql> insert into book_details values('23ab21','HARRY POTTER',500,'p1','J K ROWLING');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into book_details values('24ab25','AADUJEEVITHAM',250,'p2','BENYAMIN');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into book_details values('22cd56','Wings Of Fire',400,'p3','APJ ABDUL KALAM');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into book_details values('33us34','OTHELLO',400,'p1','WILLIAM SHAKESPEAR');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into book_details values('87yz56','ALCHEMIST',400,'p2','PAULO CHOELO');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from book_details;
++--------+---------------+------+--------------+--------------------+
+| ISBN   | title         | MRP  | publisher_id | author             |
++--------+---------------+------+--------------+--------------------+
+| 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    |
+| 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        |
+| 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           |
+| 33us34 | OTHELLO       |  400 | p1           | WILLIAM SHAKESPEAR |
+| 87yz56 | ALCHEMIST     |  400 | p2           | PAULO CHOELO       |
++--------+---------------+------+--------------+--------------------+
+5 rows in set (0.00 sec)
+
+mysql> select ISBN,title,MRP,publisher_name,author from publisher p,book_details b where p.publisher_id=b.publisher_id;
++--------+---------------+------+----------------+--------------------+
+| ISBN   | title         | MRP  | publisher_name | author             |
++--------+---------------+------+----------------+--------------------+
+| 23ab21 | HARRY POTTER  |  500 | kk_books       | J K ROWLING        |
+| 33us34 | OTHELLO       |  400 | kk_books       | WILLIAM SHAKESPEAR |
+| 24ab25 | AADUJEEVITHAM |  250 | ant_books      | BENYAMIN           |
+| 87yz56 | ALCHEMIST     |  400 | ant_books      | PAULO CHOELO       |
+| 22cd56 | Wings Of Fire |  400 | green books    | APJ ABDUL KALAM    |
++--------+---------------+------+----------------+--------------------+
+5 rows in set (0.07 sec)
+
+mysql> select * from publisher wher publisher_name like 'a%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'publisher_name like 'a%'' at line 1
+mysql> select * from publisher wher publisher_name like 'm%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'publisher_name like 'm%'' at line 1
+mysql> select * from publisher where publisher_name like 'a%';
++--------------+----------------+---------+------------+---------+
+| publisher_id | publisher_name | city    | state      | country |
++--------------+----------------+---------+------------+---------+
+| p2           | ant_books      | chennai | Tamil Nadu | India   |
++--------------+----------------+---------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select ISBN,title,MRP,author from book_details where MRP>(select min(MRP) from book_details) and title like 'A%';
++--------+-----------+------+--------------+
+| ISBN   | title     | MRP  | author       |
++--------+-----------+------+--------------+
+| 87yz56 | ALCHEMIST |  400 | PAULO CHOELO |
++--------+-----------+------+--------------+
+1 row in set (0.07 sec)
+
+mysql> update book_details set MRP=300 where ISBN='33us34';
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update book_details set MRP=450 where ISBN='87yz56';
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> table book_details;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table book_details' at line 1
+mysql> select * from book_details;
++--------+---------------+------+--------------+--------------------+
+| ISBN   | title         | MRP  | publisher_id | author             |
++--------+---------------+------+--------------+--------------------+
+| 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    |
+| 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        |
+| 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           |
+| 33us34 | OTHELLO       |  300 | p1           | WILLIAM SHAKESPEAR |
+| 87yz56 | ALCHEMIST     |  450 | p2           | PAULO CHOELO       |
++--------+---------------+------+--------------+--------------------+
+5 rows in set (0.00 sec)
+
+mysql> select title from book_details b,publisher p where b.publisher_id=p.publisher_id and publisher_name='kk_books';
++--------------+
+| title        |
++--------------+
+| HARRY POTTER |
+| OTHELLO      |
++--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from book_details b inner join publisher p on b.publisher_id=p.publisher_id;
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| ISBN   | title         | MRP  | publisher_id | author             | publisher_id | publisher_name | city     | state      | country |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    | p3           | green books    | banglore | Karnataka  | India   |
+| 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        | p1           | kk_books       | kochi    | kerala     | India   |
+| 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           | p2           | ant_books      | chennai  | Tamil Nadu | India   |
+| 33us34 | OTHELLO       |  300 | p1           | WILLIAM SHAKESPEAR | p1           | kk_books       | kochi    | kerala     | India   |
+| 87yz56 | ALCHEMIST     |  450 | p2           | PAULO CHOELO       | p2           | ant_books      | chennai  | Tamil Nadu | India   |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from book_details b,publisher p on b.publisher_id=p.publisher_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on b.publisher_id=p.publisher_id' at line 1
+mysql> select * from book_details b,publisher p where b.publisher_id=p.publisher_id;
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| ISBN   | title         | MRP  | publisher_id | author             | publisher_id | publisher_name | city     | state      | country |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    | p3           | green books    | banglore | Karnataka  | India   |
+| 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        | p1           | kk_books       | kochi    | kerala     | India   |
+| 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           | p2           | ant_books      | chennai  | Tamil Nadu | India   |
+| 33us34 | OTHELLO       |  300 | p1           | WILLIAM SHAKESPEAR | p1           | kk_books       | kochi    | kerala     | India   |
+| 87yz56 | ALCHEMIST     |  450 | p2           | PAULO CHOELO       | p2           | ant_books      | chennai  | Tamil Nadu | India   |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from book_details inner join publisher using(publisher_id);
++--------------+--------+---------------+------+--------------------+----------------+----------+------------+---------+
+| publisher_id | ISBN   | title         | MRP  | author             | publisher_name | city     | state      | country |
++--------------+--------+---------------+------+--------------------+----------------+----------+------------+---------+
+| p3           | 22cd56 | Wings Of Fire |  400 | APJ ABDUL KALAM    | green books    | banglore | Karnataka  | India   |
+| p1           | 23ab21 | HARRY POTTER  |  500 | J K ROWLING        | kk_books       | kochi    | kerala     | India   |
+| p2           | 24ab25 | AADUJEEVITHAM |  250 | BENYAMIN           | ant_books      | chennai  | Tamil Nadu | India   |
+| p1           | 33us34 | OTHELLO       |  300 | WILLIAM SHAKESPEAR | kk_books       | kochi    | kerala     | India   |
+| p2           | 87yz56 | ALCHEMIST     |  450 | PAULO CHOELO       | ant_books      | chennai  | Tamil Nadu | India   |
++--------------+--------+---------------+------+--------------------+----------------+----------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from book_details b left join publisher p on b.publisher_id=p.publisher_id;
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| ISBN   | title         | MRP  | publisher_id | author             | publisher_id | publisher_name | city     | state      | country |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        | p1           | kk_books       | kochi    | kerala     | India   |
+| 33us34 | OTHELLO       |  300 | p1           | WILLIAM SHAKESPEAR | p1           | kk_books       | kochi    | kerala     | India   |
+| 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           | p2           | ant_books      | chennai  | Tamil Nadu | India   |
+| 87yz56 | ALCHEMIST     |  450 | p2           | PAULO CHOELO       | p2           | ant_books      | chennai  | Tamil Nadu | India   |
+| 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    | p3           | green books    | banglore | Karnataka  | India   |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+5 rows in set (0.03 sec)
+
+mysql> select * from book_details b right join publisher p on b.publisher_id=p.publisher_id;
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| ISBN   | title         | MRP  | publisher_id | author             | publisher_id | publisher_name | city     | state      | country |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    | p3           | green books    | banglore | Karnataka  | India   |
+| 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        | p1           | kk_books       | kochi    | kerala     | India   |
+| 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           | p2           | ant_books      | chennai  | Tamil Nadu | India   |
+| 33us34 | OTHELLO       |  300 | p1           | WILLIAM SHAKESPEAR | p1           | kk_books       | kochi    | kerala     | India   |
+| 87yz56 | ALCHEMIST     |  450 | p2           | PAULO CHOELO       | p2           | ant_books      | chennai  | Tamil Nadu | India   |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from book_details b left join publisher p on b.publisher_id=p.publisher_id UNION ALL select * from book_details b right join publisher p on b.publisher_id=p.publisher_id;
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| ISBN   | title         | MRP  | publisher_id | author             | publisher_id | publisher_name | city     | state      | country |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        | p1           | kk_books       | kochi    | kerala     | India   |
+| 33us34 | OTHELLO       |  300 | p1           | WILLIAM SHAKESPEAR | p1           | kk_books       | kochi    | kerala     | India   |
+| 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           | p2           | ant_books      | chennai  | Tamil Nadu | India   |
+| 87yz56 | ALCHEMIST     |  450 | p2           | PAULO CHOELO       | p2           | ant_books      | chennai  | Tamil Nadu | India   |
+| 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    | p3           | green books    | banglore | Karnataka  | India   |
+| 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    | p3           | green books    | banglore | Karnataka  | India   |
+| 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        | p1           | kk_books       | kochi    | kerala     | India   |
+| 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           | p2           | ant_books      | chennai  | Tamil Nadu | India   |
+| 33us34 | OTHELLO       |  300 | p1           | WILLIAM SHAKESPEAR | p1           | kk_books       | kochi    | kerala     | India   |
+| 87yz56 | ALCHEMIST     |  450 | p2           | PAULO CHOELO       | p2           | ant_books      | chennai  | Tamil Nadu | India   |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select title,MRP,city from book_details b,publisher p where b.publisher_id=p.publisher_id;
++---------------+------+----------+
+| title         | MRP  | city     |
++---------------+------+----------+
+| Wings Of Fire |  400 | banglore |
+| HARRY POTTER  |  500 | kochi    |
+| AADUJEEVITHAM |  250 | chennai  |
+| OTHELLO       |  300 | kochi    |
+| ALCHEMIST     |  450 | chennai  |
++---------------+------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from book_details b,publisher p where b.publisher_id=p.publisher_id;
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| ISBN   | title         | MRP  | publisher_id | author             | publisher_id | publisher_name | city     | state      | country |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+| 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    | p3           | green books    | banglore | Karnataka  | India   |
+| 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        | p1           | kk_books       | kochi    | kerala     | India   |
+| 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           | p2           | ant_books      | chennai  | Tamil Nadu | India   |
+| 33us34 | OTHELLO       |  300 | p1           | WILLIAM SHAKESPEAR | p1           | kk_books       | kochi    | kerala     | India   |
+| 87yz56 | ALCHEMIST     |  450 | p2           | PAULO CHOELO       | p2           | ant_books      | chennai  | Tamil Nadu | India   |
++--------+---------------+------+--------------+--------------------+--------------+----------------+----------+------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from publisher p right join book_details b on b.publisher_id=p.publisher_id;
++--------------+----------------+----------+------------+---------+--------+---------------+------+--------------+--------------------+
+| publisher_id | publisher_name | city     | state      | country | ISBN   | title         | MRP  | publisher_id | author             |
++--------------+----------------+----------+------------+---------+--------+---------------+------+--------------+--------------------+
+| p1           | kk_books       | kochi    | kerala     | India   | 23ab21 | HARRY POTTER  |  500 | p1           | J K ROWLING        |
+| p1           | kk_books       | kochi    | kerala     | India   | 33us34 | OTHELLO       |  300 | p1           | WILLIAM SHAKESPEAR |
+| p2           | ant_books      | chennai  | Tamil Nadu | India   | 24ab25 | AADUJEEVITHAM |  250 | p2           | BENYAMIN           |
+| p2           | ant_books      | chennai  | Tamil Nadu | India   | 87yz56 | ALCHEMIST     |  450 | p2           | PAULO CHOELO       |
+| p3           | green books    | banglore | Karnataka  | India   | 22cd56 | Wings Of Fire |  400 | p3           | APJ ABDUL KALAM    |
++--------------+----------------+----------+------------+---------+--------+---------------+------+--------------+--------------------+
+5 rows in set (0.00 sec)
+
+mysql> select distinct publisher_name from publisher p,book_details b;
++----------------+
+| publisher_name |
++----------------+
+| kk_books       |
+| ant_books      |
+| green books    |
++----------------+
+3 rows in set (0.01 sec)
+
+mysql> 
+
