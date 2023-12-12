@@ -1,1 +1,1092 @@
 
+1 . Program to find largest and smallest element in an array
+
+
+Enter size of array: 5
+Enter array element: 
+Array[1] 23
+
+Array[2] 455
+
+Array[3] 77
+
+Array[4] 88
+
+Array[5] 3
+
+Largest element : 3
+Smallest element : 455
+
+
+2. Program to Merge two sorted arrays and store in a third array
+
+Enter size of array a:
+5
+Enter array elements:
+34
+23
+17
+87
+55
+Enter size of array b:
+5
+Enter array elements:
+11
+66
+44
+33
+39
+
+Array a:
+17	23	34	55	87	
+Array b:
+11	33	39	44	66	
+Array c:
+11	17	23	33	34	39	44	55	66	87	
+
+
+3.  Program to implement stack using array
+
+ Enter the size of STACK[MAX=100]:5
+
+	 STACK OPERATIONS USING ARRAY
+	--------------------------------
+	 1.PUSH
+	 2.POP
+	 3.DISPLAY
+	 4.EXIT
+ Enter the Choice:1
+ Enter a value to be pushed:12
+
+ Enter the Choice:1
+ Enter a value to be pushed:13
+
+ Enter the Choice:1
+ Enter a value to be pushed:34
+
+ Enter the Choice:156
+
+	 Please Enter a Valid Choice(1/2/3/4)
+ Enter the Choice:1
+ Enter a value to be pushed:115
+
+ Enter the Choice:3
+
+ The elements in STACK 
+
+115
+34
+13
+12
+ Press Next Choice
+ Enter the Choice:2
+
+	 The popped elements is 115
+ Enter the Choice:3
+
+ The elements in STACK 
+
+34
+13
+12
+ Press Next Choice
+ Enter the Choice:4
+
+	 EXIT POINT
+	 
+	 
+4.Program to implement queue using array
+
+Queue using Array
+1.Insertion 
+2.Deletion 
+3.Display 
+4.Exit
+Enter the Choice:1
+
+ Enter no 1:21
+
+Enter the Choice:1 
+
+ Enter no 2:12
+
+Enter the Choice:1
+
+ Enter no 3:56
+
+Enter the Choice:3
+
+Queue Elements are:
+ 21
+12
+56
+
+Enter the Choice:2
+
+ Deleted Element is 21
+Enter the Choice:3
+
+Queue Elements are:
+ 12
+56
+
+Enter the Choice:4
+
+
+5 . Program to implement Circular Queue - Add, Delete, Search
+
+Enter the size of the queue:5
+
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+1
+Enter the element to insert:21
+
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+1
+Enter the element to insert:3
+
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+1
+Enter the element to insert:54
+
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+1
+Enter the element to insert:345
+
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+3
+Front=0
+Rear=3
+Queue is:
+21	3	54	345	
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+2
+Deleted element is 21
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+3
+Front=1
+Rear=3
+Queue is:
+3	54	345	
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+4
+Enter the element to search:
+54
+Element found at position 2
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+4
+Enter the element to search:
+45
+Element not found
+
+
+1.Insertion
+2.Deletion
+3.Display
+4.Search
+5.Exit
+
+Enter Your Choice:
+5
+
+6.Program to implement singly linked list
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+2    
+Enter the number to be inserted:
+1
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+2
+Enter the number to be inserted:
+2
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+the list is
+2-->1-->
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+3
+Enter the number to be inserted:
+23
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+the list is
+2-->1-->23-->
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+4
+Enter Position & Data:
+2
+3
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+the list is
+2-->3-->1-->23-->
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+5
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+the list is
+3-->1-->23-->
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+6
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+the list is
+3-->1-->
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+7
+Enter the position
+1
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+the list is
+3-->
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+8
+
+Enter the element you want:4
+4 is not present in the linked list
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+8
+
+Enter the element you want:3
+3 is present in the linked list
+
+1.See List
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+9
+
+7. Program to implement stack using Singly Linked Stack - Push, Pop,Linear Search
+
+
+1.Push
+2.Pop
+3.Linear Search
+4.Display
+5.Exit
+
+Enter your choice:1
+
+Enter the value:1
+
+
+1.Push
+2.Pop
+3.Linear Search
+4.Display
+5.Exit
+
+Enter your choice:1
+
+Enter the value:2
+
+
+1.Push
+2.Pop
+3.Linear Search
+4.Display
+5.Exit
+
+Enter your choice:1
+
+Enter the value:23
+
+
+1.Push
+2.Pop
+3.Linear Search
+4.Display
+5.Exit
+
+Enter your choice:1
+
+Enter the value:56
+
+
+1.Push
+2.Pop
+3.Linear Search
+4.Display
+5.Exit
+
+Enter your choice:4
+the list is
+56-->23-->2-->1-->
+
+1.Push
+2.Pop
+3.Linear Search
+4.Display
+5.Exit
+
+Enter your choice:2
+Element popped - 56
+
+1.Push
+2.Pop
+3.Linear Search
+4.Display
+5.Exit
+
+Enter your choice:4
+the list is
+23-->2-->1-->
+
+1.Push
+2.Pop
+3.Linear Search
+4.Display
+5.Exit
+
+Enter your choice:3
+
+Enter element:2
+
+Item found at position 2
+
+1.Push
+2.Pop
+3.Linear Search
+4.Display
+5.Exit
+
+Enter your choice:5
+
+8. Program for Doubly linked list - Insertion, Deletion, Search
+
+
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+2
+
+Enter value: 1
+
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+2
+
+Enter value: 2
+
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+2
+
+Enter value: 3
+
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+3->2->1->null
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+3
+
+Enter value: 13
+
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+3->2->1->13->null
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+4
+
+Enter value: 45
+
+Enter the position: 2
+
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+3->45->2->1->13->null
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+5
+
+3 deleted
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+45->2->1->13->null
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+6
+
+13 deleted
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+45->2->1->null
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+7
+
+Enter the position: 2
+
+2 deleted
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+1
+45->1->null
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+8
+
+Enter element to search: 45
+
+Item found at position 1
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+8
+
+Enter element to search: 2
+
+Item not found
+1.Display
+2.Insertion at Starting
+3.Insertion at end
+4.Insertion at any position
+5.Delete First Element
+6.Delete Last Element
+7.Delete Element at any position
+8.Search
+9.Exit
+
+Enter Your Choice:
+9
+
+9.Program for Binary Search Tree operations- Insertion, Deletion, Search
+
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::1
+
+ Enter a number :45
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::2
+
+ Enter a number :15
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::4
+
+................
+45->15->
+.................
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::2
+
+ Enter a number :44
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::2
+
+ Enter a number :11
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::2
+
+ Enter a number :66
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::4
+
+................
+45->15->11->44->66->
+.................
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::3 
+
+ Enter a number :15
+
+ found 
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::3
+
+ Enter a number :10
+
+ not found 
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::5
+
+ Enter a number to be Deleted :11
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::4
+
+................
+45->15->44->66->
+.................
+
+ 1.Create ROOT Node 
+2.Insert Node
+3.Serach
+4. PReorderTraversal
+5.Delete
+6.quit
+Choose Option::6
+
+
+10.Program to implement Set Data Structure and set operations (Union,
+Intersection and Difference) using Bit String.
+
+Enter size of universal set : 7   
+ Enter elements : 1
+2
+3
+4
+5
+6
+7
+
+ Enter the size of set 1 :3
+
+ Enter elements :1
+2
+3
+
+ enter size of set 2 : 4
+
+ Enter the elements 2
+3
+4
+5
+
+ UNiversal set :{1 	2 	3 	4 	5 	6 	7 	}
+ Set 1 bit string :{1 	1 	1 	0 	0 	0 	0 	}
+Set 2 bit string{0 	1 	1 	1 	1 	0 	0 	}
+Set 1:{1 	,2 	,3 	,}
+Set 2: {2 	,3 	,4 	,5 	,}
+ Unoion : {1 	2 	3 	4 	5 	}
+ Intersection : {2 	3 	}
+ Difference :{1 	}
+
+
+11.Program to implement Disjoint Sets and the associated operations
+(create, union, find)
+
+ 1. Make set
+ 2. Display set representatives 
+ 3. union 
+ 4. Find Set
+ 5. Exit
+ Enter our choice  :: 1
+Enter element :1
+
+
+ 1. Make set
+ 2. Display set representatives 
+ 3. union 
+ 4. Find Set
+ 5. Exit
+ Enter our choice  :: 1
+Enter element :2
+
+
+ 1. Make set
+ 2. Display set representatives 
+ 3. union 
+ 4. Find Set
+ 5. Exit
+ Enter our choice  :: 1
+Enter element :3
+
+
+ 1. Make set
+ 2. Display set representatives 
+ 3. union 
+ 4. Find Set
+ 5. Exit
+ Enter our choice  :: 1
+Enter element :4
+
+
+ 1. Make set
+ 2. Display set representatives 
+ 3. union 
+ 4. Find Set
+ 5. Exit
+ Enter our choice  :: 2
+The sets are 
+1 ,2 ,3 ,4 ,
+
+ 1. Make set
+ 2. Display set representatives 
+ 3. union 
+ 4. Find Set
+ 5. Exit
+ Enter our choice  :: 3
+enter the two sets to union 
+enter first set : 1
+enter the second set : 2
+
+
+ 1. Make set
+ 2. Display set representatives 
+ 3. union 
+ 4. Find Set
+ 5. Exit
+ Enter our choice  :: 2
+The sets are 
+1 ,3 ,4 ,
+
+ 1. Make set
+ 2. Display set representatives 
+ 3. union 
+ 4. Find Set
+ 5. Exit
+ Enter our choice  :: 4
+Enter the value to find :2
+
+ value 2 is in set 1 
+
+ 1. Make set
+ 2. Display set representatives 
+ 3. union 
+ 4. Find Set
+ 5. Exit
+ Enter our choice  :: 5
+
+
+
+
+
+
+
+
+
+
+
