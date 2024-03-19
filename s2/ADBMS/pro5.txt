@@ -166,6 +166,8 @@ mysql> select Department,sum(salary) from employee where Education <>'PG' group 
 +------------+-------------+
 1 row in set (0.00 sec)
 
+3.
+
 mysql> select Department,sum(salary) from employee group by Department having sum(salary)>=10000 order by sum(salary) desc;
 +------------+-------------+
 | Department | sum(salary) |
