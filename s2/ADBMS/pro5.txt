@@ -1,0 +1,178 @@
+mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 7
+Server version: 5.7.33-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| alex               |
+| mysql              |
+| performance_schema |
+| sys                |
+| white_wolf         |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use white_wolf;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+mysql> show tables;
++----------------------+
+| Tables_in_white_wolf |
++----------------------+
+| student              |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> create table employee(emp_id int(5),name varchar(20),Gender varchar(5),Department varchar(20),Education varchar(20),MOJ varchar(20),salary int(10));
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> insert into employee values(1001,'Ajay','M','MCA','PHD','jan',30000);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into employee values(1002,'Aju','M','CSE','PHD','dec',30000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into employee values(1003,'Ajith','M','CSE','PHD','nov',35000);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into employee values(1004,'Ajitha','F','MCA','PG','sep',34400);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into employee values(1005,'bavitha','F','MCA','PG','sep',34400);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into employee values(1006,'balu','M','MCA','PG','march',34400);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from employee;
++--------+---------+--------+------------+-----------+-------+--------+
+| emp_id | name    | Gender | Department | Education | MOJ   | salary |
++--------+---------+--------+------------+-----------+-------+--------+
+|   1001 | Ajay    | M      | MCA        | PHD       | jan   |  30000 |
+|   1002 | Aju     | M      | CSE        | PHD       | dec   |  30000 |
+|   1003 | Ajith   | M      | CSE        | PHD       | nov   |  35000 |
+|   1004 | Ajitha  | F      | MCA        | PG        | sep   |  34400 |
+|   1005 | bavitha | F      | MCA        | PG        | sep   |  34400 |
+|   1006 | balu    | M      | MCA        | PG        | march |  34400 |
++--------+---------+--------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+
+1.
+
+
+mysql> select Department,sum(salary) from employee group by Department; 
++------------+-------------+
+| Department | sum(salary) |
++------------+-------------+
+| CSE        |       65000 |
+| MCA        |      133200 |
++------------+-------------+
+2 rows in set (0.08 sec)
+
+mysql> select Department,sum(salary) from employee group by Department
+having sum(salary)>100000;
++------------+-------------+
+| Department | sum(salary) |
++------------+-------------+
+| MCA        |      133200 |
++------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select distinct Department from employee;
++------------+
+| Department |
++------------+
+| MCA        |
+| CSE        |
++------------+
+2 rows in set (0.00 sec)
+
+mysql> select count(salary) from employee;
++---------------+
+| count(salary) |
++---------------+
+|             6 |
++---------------+
+1 row in set (0.03 sec)
+
+mysql> select * from employee where Department='MCA' and Education='PHD';
++--------+------+--------+------------+-----------+------+--------+
+| emp_id | name | Gender | Department | Education | MOJ  | salary |
++--------+------+--------+------------+-----------+------+--------+
+|   1001 | Ajay | M      | MCA        | PHD       | jan  |  30000 |
++--------+------+--------+------------+-----------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where Department='MCA' or Education='PG'; 
++--------+---------+--------+------------+-----------+-------+--------+
+| emp_id | name    | Gender | Department | Education | MOJ   | salary |
++--------+---------+--------+------------+-----------+-------+--------+
+|   1001 | Ajay    | M      | MCA        | PHD       | jan   |  30000 |
+|   1004 | Ajitha  | F      | MCA        | PG        | sep   |  34400 |
+|   1005 | bavitha | F      | MCA        | PG        | sep   |  34400 |
+|   1006 | balu    | M      | MCA        | PG        | march |  34400 |
++--------+---------+--------+------------+-----------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select name as First_name,Education as Qualification from employee;
++------------+---------------+
+| First_name | Qualification |
++------------+---------------+
+| Ajay       | PHD           |
+| Aju        | PHD           |
+| Ajith      | PHD           |
+| Ajitha     | PG            |
+| bavitha    | PG            |
+| balu       | PG            |
++------------+---------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employee where name like 'A%';
++--------+--------+--------+------------+-----------+------+--------+
+| emp_id | name   | Gender | Department | Education | MOJ  | salary |
++--------+--------+--------+------------+-----------+------+--------+
+|   1001 | Ajay   | M      | MCA        | PHD       | jan  |  30000 |
+|   1002 | Aju    | M      | CSE        | PHD       | dec  |  30000 |
+|   1003 | Ajith  | M      | CSE        | PHD       | nov  |  35000 |
+|   1004 | Ajitha | F      | MCA        | PG        | sep  |  34400 |
++--------+--------+--------+------------+-----------+------+--------+
+4 rows in set (0.00 sec)
+
+
+2.
+
+mysql> select Department,sum(salary) from employee where Education <>'PG' group by Department having sum(salary)>=50000;
++------------+-------------+
+| Department | sum(salary) |
++------------+-------------+
+| CSE        |       65000 |
++------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select Department,sum(salary) from employee group by Department having sum(salary)>=10000 order by sum(salary) desc;
++------------+-------------+
+| Department | sum(salary) |
++------------+-------------+
+| MCA        |      133200 |
+| CSE        |       65000 |
++------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> 
