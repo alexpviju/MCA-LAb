@@ -1,0 +1,23 @@
+mysql> delimiter $$
+mysql> create procedure Fact(in a int)
+    -> begin
+    -> declare f int default 1;
+    -> while a>0 do
+    -> set f=f*a;
+    -> set a=a-1;
+    -> end while;
+    -> select concat('fact=',f)as result;
+    -> end $$
+Query OK, 0 rows affected (0.65 sec)
+
+
+mysql> delimiter ;
+mysql> call fact(5);
++----------+
+| result   |
++----------+
+| fact=120 |
++----------+
+1 row in set (0.14 sec)
+
+Query OK, 0 rows affected (0.17 sec)
