@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background-image: url('C:/Users/viju1/Desktop/S4/project/planB/templates/inline_image_preview.jpg'); /* Local image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333; /* Adjust text color for better visibility on the background */
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for the form container */
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+            text-align: center;
+            color: #000; /* Black text for better contrast on semi-transparent background */
+        }
+        .form-group input, .form-group select {
+            width: 80%;
+            padding: 8px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque white background */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-row .form-group {
+            flex: 1;
+            margin: 0 10px;
+        }
+        .section-heading {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #000; /* Black text for better contrast */
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background for headings */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for section headings */
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for the button */
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .notification {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 style="text-align: center; color: #000;">Customer Churn Prediction</h1>
+        <form action="/predict" method="post" onsubmit="return validateForm()">
+            <!-- Account Information -->
+            <div class="section-heading">Account Information</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="AccountWeeks">Account Weeks:</label>
+                    <input type="number" id="AccountWeeks" name="AccountWeeks" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="ContractRenewal">Contract Renewal:</label>
+                    <select id="ContractRenewal" name="ContractRenewal" required>
+                        <option value="-1">--Not selected--</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Data Usage -->
+            <div class="section-heading">Data Usage</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="DataPlan">Data Plan:</label>
+                    <select id="DataPlan" name="DataPlan" required>
+                        <option value="-1">--Not selected--</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="DataUsage">Data Usage (GB):</label>
+                    <input type="number" step="0.1" id="DataUsage" name="DataUsage" required>
+                </div>
+            </div>
+
+            <!-- Customer Service Calls -->
+            <div class="section-heading">Customer Service Calls</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="CustServCalls">Customer Service Calls:</label>
+                    <input type="number" id="CustServCalls" name="CustServCalls" min="0" required>
+                </div>
+            </div>
+
+            <!-- Call Information -->
+            <div class="section-heading">Call Information</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="DayMins">Day Minutes:</label>
+                    <input type="number" step="0.1" id="DayMins" name="DayMins" required>
+                </div>
+                <div class="form-group">
+                    <label for="DayCalls">Day Calls:</label>
+                    <input type="number" id="DayCalls" name="DayCalls" min="0" required>
+                </div>
+            </div>
+
+            <!-- Financial Information -->
+            <div class="section-heading">Financial Information</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="MonthlyCharge">Monthly Charge:</label>
+                    <input type="number" step="0.01" id="MonthlyCharge" name="MonthlyCharge" required>
+                </div>
+                <div class="form-group">
+                    <label for="OverageFee">Overage Fee:</label>
+                    <input type="number" step="0.01" id="OverageFee" name="OverageFee" required>
+                </div>
+                <div class="form-group">
+                    <label for="RoamMins">Roaming Minutes:</label>
+                    <input type="number" step="0.1" id="RoamMins" name="RoamMins" required>
+                </div>
+            </div>
+
+            <!-- Email Input Field -->
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <button type="submit">Predict Churn</button>
+        </form>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+            const selects = document.querySelectorAll('select');
+            const notification = document.getElementById('notification');
+            notification.textContent = '';
+
+            // Validate dropdowns
+            selects.forEach(select => {
+                if (select.value === '-1') {
+                    isValid = false;
+                    notification.textContent = 'Please select an option for all fields.';
+                    select.style.borderColor = 'red';
+                } else {
+                    select.style.borderColor = '';
+                }
+            });
+
+            // Validate email
+            const email = document.getElementById('email').value.trim();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                isValid = false;
+                notification.textContent = 'Please enter a valid email address.';
+                document.getElementById('email').style.borderColor = 'red';
+            } else {
+                document.getElementById('email').style.borderColor = '';
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
